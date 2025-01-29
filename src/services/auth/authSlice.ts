@@ -22,6 +22,17 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    userLogout:(state)=>{
+      localStorage.removeItem('userData')
+      state.userData = {
+        name:"",
+        email:"",
+        phoneNumber:null,
+        profileImg:"",
+        uid:""
+      }
+      state.message ="You have been Logged Out"
+    },
     resetDefault:(state)=>{
       state.error = ""
       state.loading  = false
@@ -49,5 +60,5 @@ const userSlice = createSlice({
       });
   },
 });
-export const {resetMessage,resetDefault}  = userSlice.actions
+export const {resetMessage,resetDefault,userLogout}  = userSlice.actions
 export default userSlice.reducer;

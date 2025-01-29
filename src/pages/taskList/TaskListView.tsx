@@ -37,9 +37,13 @@ export const TaskList: FC = () => {
       dispatch(resetMessage());
     }
     const todoFilter = tasks.filter((task) => task.taskStatus === "TO-DO");
-    const inProgessFilter = tasks.filter((task) => task.taskStatus === "IN-PROGRESS");
-    const completeFilter = tasks.filter((task) => task.taskStatus === "COMPLETED");
-    
+    const inProgessFilter = tasks.filter(
+      (task) => task.taskStatus === "IN-PROGRESS"
+    );
+    const completeFilter = tasks.filter(
+      (task) => task.taskStatus === "COMPLETED"
+    );
+
     setTodos(todoFilter);
     setInProgess(inProgessFilter);
     setCompleted(completeFilter);

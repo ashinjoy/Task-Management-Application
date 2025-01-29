@@ -8,7 +8,10 @@ interface IChildProp {
 
 export const ProtectedRoute: FC<IChildProp> = ({ children }) => {
   const { userData } = useAppSelector((state) => state.user);
-  if (!userData) {
+  console.log(userData)
+  if (!userData?.email) {
+    console.log('inside the eco');
+    
     return <Navigate to={"/"} replace />;
   }
   return children;
