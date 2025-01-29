@@ -3,6 +3,7 @@ import { GoCheckCircleFill } from "react-icons/go";
 import { MdDragIndicator } from "react-icons/md";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { BatchUpdate } from "../menu/BatchUpdateMeny";
+import { MdAdd } from "react-icons/md";
 
 interface ITableProps {
   headingColor: string;
@@ -45,7 +46,7 @@ export const TaskLists: FC<ITableProps> = ({
   return (
     <>
       <DragDropContext onDragEnd={handleOnDragEnd}>
-        <div className="bg-[#F1F1F1] rounded-md">
+        <div className="bg-[#F1F1F1] rounded-md min-h-[23.5rem]">
           <div className={`${headingColor} rounded-md `}>
             <div className="flex justify-between items-center p-2">
               <span className="font-semibold text-base">{heading}(3)</span>
@@ -92,7 +93,15 @@ export const TaskLists: FC<ITableProps> = ({
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                 >
-                  {tasks.length > 0 &&
+                  {heading === "Todo" && (
+                    <tr className=" flex space-x-2 p-3 items-center border-b-2 stroke-black">
+                      <button className="flex gap-2 justify-center items-center text-sm font-bold text-slate-500">
+                        <MdAdd className="text-[#7B1984]" />
+                        ADD TASK
+                      </button>
+                    </tr>
+                  )}
+                  {tasks.length > 0 ? (
                     tasks.map((task, index) => {
                       return (
                         <Draggable
@@ -129,7 +138,18 @@ export const TaskLists: FC<ITableProps> = ({
                           }}
                         </Draggable>
                       );
-                    })}
+                    })
+                  ) : (
+                    <tr>
+                      <td >
+                        <div className="flex justify-center items-center h-40">
+                          <p className="text-center text-lg font-medium">
+                            No Tasks in {heading}
+                          </p>
+                        </div>
+                      </td>
+                    </tr>
+                  )}
                   {provided.placeholder}
                 </tbody>
               )}

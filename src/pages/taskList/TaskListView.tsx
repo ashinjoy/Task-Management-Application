@@ -117,8 +117,16 @@ export const TaskList: FC = () => {
             />
           </div>
         </div>
+        <div className="min-w-full flex justify-between items-center border-t-2 ">
+        <span className="font-bold text-sm text-slate-400">Task name</span>
+        <span  className="font-bold text-sm text-slate-400">Due on</span>
+        <span  className="font-bold text-sm text-slate-400">Task Status</span>
+        <span  className="font-bold text-sm text-slate-400">Task Category</span>
+        <span></span>
+      </div>
+        {/* {todos && todos.length > 0 && ( */}
+        {true && (
 
-        {todos && todos.length > 0 && (
           <TaskLists
             headingColor="bg-[#FAC3FF]"
             heading="Todo"
@@ -132,7 +140,8 @@ export const TaskList: FC = () => {
             tasksList={inProgess}
           />
         )}
-        {completed && completed.length > 0 && (
+        {/* {completed && completed.length > 0 && ( */}
+        {true && (
           <TaskLists
             headingColor="bg-[#CEFFCC]"
             heading="Completed"

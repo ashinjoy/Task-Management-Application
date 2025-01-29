@@ -17,6 +17,7 @@ export const createTaskService = async (
 ): Promise<unknown> => {
   try {
     const response = await addDoc(collection(fireStore, "tasks"), formData);
+    console.log(formData)
     const docs = await getDoc(response);
     if (docs.exists()) {
       const data = docs.data();
@@ -38,6 +39,7 @@ export const createTaskService = async (
 
 export const getTaskService = async (uid): Promise<any[]> => {
   try {
+    console.log(uid)
     const response = await getDocs(query(collection(fireStore, "tasks"),where("uid","==",uid)));
     const data = [];
     response.forEach((doc) => {

@@ -26,6 +26,7 @@ export const getTasks = createAsyncThunk<unknown, void>(
   async (uid, { rejectWithValue }) => {
     try {
       const response = await getTaskService(uid);
+      console.log(response)
       return response;
     } catch (error) {
       console.error(error);
