@@ -50,10 +50,10 @@ export const Navbar: React.FC = () => {
                 src={
                   "https://lh3.googleusercontent.com/a/ACg8ocJUFf1HtbcsdFSOEJpkbHUbs3kx-qOc-ILL3w-SNft010y_SQ=s96-c"
                 }
-                className="w-[35px] h-[35px] rounded-full object-cover"
+                className="w-[25px] h-[25px] md:w-[35px] md:h-[35px]  rounded-full object-cover"
               />
             )}
-            {userData && userData?.name && <span>{userData?.name}</span>}
+            {userData && userData?.name && <span className="hidden  md:block">{userData?.name}</span>}
           </div>
         </div>
         <div className="hidden md:flex gap-4 justify-between">

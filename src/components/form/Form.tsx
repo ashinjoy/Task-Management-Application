@@ -23,9 +23,9 @@ const {userData} =   useAppSelector((state)=>state.user)
   const handleClick = () => {
     fileUpload.current?.click();
   };
-  const handleFileUpload = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(evt.target.files);
-  };
+    const handleFileUpload = (evt: React.ChangeEvent<HTMLInputElement>) => {
+      console.log(evt.target.files);
+    };
   const handleSubmit = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (
@@ -42,7 +42,7 @@ const {userData} =   useAppSelector((state)=>state.user)
 
   return (
     <>
-      <form action="#" className="flex flex-col gap-3 " onSubmit={handleSubmit}>
+      <form action="#" className="flex flex-col gap-3 max-h-[82dvh] overflow-y-auto md:p-3 flex-1" onSubmit={handleSubmit} >
         <input
           type="text"
           name=""
@@ -55,10 +55,12 @@ const {userData} =   useAppSelector((state)=>state.user)
           }
         />
         <TextEditor formInput={formInput} setFormInput={setFormInput} />
-        <span className="font-semibold text-xs text-slate-400">
+        <div className="flex flex-col md:flex-row ">
+          <div className="flex flex-col gap-1.5 ">
+         <span className="font-semibold text-xs text-slate-400">
           Task Category*
         </span>
-        <div className="flex gap-3">
+        <div className="flex gap-3 ">
           <SelectableRadioButton
             name="Work"
             formInput={formInput}
@@ -70,14 +72,20 @@ const {userData} =   useAppSelector((state)=>state.user)
             setFormInput={setFormInput}
           />
         </div>
-        <span className="font-semibold text-xs text-slate-400">Due on*</span>
+        </div>
+        <div className="flex flex-col gap-1.5 w-2/3  md:items-center">
+         <span className="font-semibold text-xs text-slate-400 text-start">Due on*</span>
         <Datepicker formInput={formInput} setFormInput={setFormInput} />
-        <span className="font-semibold text-xs text-slate-400">
+        </div>
+        <div className="flex flex-col gap-1.5 w-2/3 md:items-center" >
+        <span className="font-semibold text-xs text-slate-400 text-start">
           Task status*
         </span>
         <SelectBox formInput={formInput} setFormInput={setFormInput} />
+        </div>
+        </div>
         <span className="font-semibold text-xs text-slate-400">Attachment</span>
-        <div className="min-w-full flex justify-center items-center gap-2 bg-[#F1F1F1] border-2 p-3">
+        <div className="min-w-full flex justify-center items-center gap-2 bg-[#F1F1F1] border-2 p-3 rounded-lg">
           <span>Drop your files here or</span>
           <span className="text-blue-700 underline" onClick={handleClick}>
             Upload
@@ -92,10 +100,10 @@ const {userData} =   useAppSelector((state)=>state.user)
             onChange={handleFileUpload}
           />
         </div>
-        <div className="min-w-full bg-[#F1F1F1] p-4 flex justify-end ">
+        <div className="min-w-full bg-[#F1F1F1] p-4 flex justify-end self-end ">
           <Button text="CANCEL" />
           <Button text="CREATE" textColor="text-white" color="bg-[#7B1984]"/>
-        </div>
+        </div>  
       </form>
     </>
   );

@@ -43,7 +43,6 @@ export const TaskList: FC = () => {
     const completeFilter = tasks.filter(
       (task) => task.taskStatus === "COMPLETED"
     );
-
     setTodos(todoFilter);
     setInProgess(inProgessFilter);
     setCompleted(completeFilter);

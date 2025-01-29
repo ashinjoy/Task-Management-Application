@@ -29,7 +29,7 @@ export const TextEditor:FC<ITextEditor> = ({formInput,setFormInput}) => {
           (e: EditorTextChangeEvent) => setFormInput({...formInput,description:e.htmlValue || ''})
         }
         headerTemplate={header}
-        style={{ height: "7.8rem" }}
+        style={{ height: "6rem" }}
       />
     </>
   );
